@@ -28,13 +28,14 @@ $(document).ready(function () {
         var hour = $("<div>");
         var textArea = $("<textarea>");
         var saveButton = $("<button>");
+        var icon = $("<li>");
 
         // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
         timeBlock.addClass("row time-block");
         hour.addClass("col-2 hour").attr("style", "padding-top: 10px");
         textArea.addClass("col-8");
-        saveButton.addClass("col-2 saveBtn")
-            .html('<i class="fas fa - save"></i>');
+        saveButton.addClass("col-2 saveBtn");
+        icon.html('<i class="far fa-save fa-lg"></i>').attr("style", "list-style-type:none");
 
 
         // 4. Then give each "letterBtn" a data-attribute called "data-letter".
@@ -47,6 +48,7 @@ $(document).ready(function () {
         $(timeBlock).append(hour);
         $(timeBlock).append(textArea);
         $(timeBlock).append(saveButton);
+        $(saveButton).append(icon);
         $(".container").append(timeBlock);
 
     }
