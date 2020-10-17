@@ -26,7 +26,7 @@ $(document).ready(function () {
             formatTime24 = (moment()
                 .startOf("day")
                 .add(i, "hours"))
-                .format("HH");
+                .format("H");
 
             time12.push(formatTime12);
             time24.push(formatTime24);
@@ -43,6 +43,9 @@ $(document).ready(function () {
         var textArea = $("<textarea>");
         var saveButton = $("<button>");
         var icon = $("<li>");
+
+        console.log('currentHour :>> ', currentHour);
+        console.log('time24[i] :>> ', time24[i]);
 
         if (currentHour === time24[i]) {
             textArea.addClass("present");
@@ -67,7 +70,8 @@ $(document).ready(function () {
         textArea
             .addClass("col-8");
         saveButton
-            .addClass("col-2 saveBtn");
+            .addClass("col-2 saveBtn")
+            .attr("id", "save-" + parseInt(time12[i]));
         icon
             .html('<i class="far fa-save fa-lg"></i>')
             .attr("style", "list-style-type:none");
@@ -80,5 +84,45 @@ $(document).ready(function () {
         $(".container").append(timeBlock);
 
     }
+
+    /*
+    signUpButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // create user object from submission
+        var user = {
+            firstName: firstNameInput.value.trim(),
+            lastName: lastNameInput.value.trim(),
+            email: emailInput.value.trim(),
+            password: passwordInput.value.trim()
+        };
+
+        console.log(user);
+
+        // validate the fields
+        if (user.firstName === "") {
+            displayMessage("error", "First name cannot be blank");
+        } else if (user.lastName === "") {
+            displayMessage("error", "Last name cannot be blank");
+        } else if (user.email === "") {
+            displayMessage("error", "Email cannot be blank");
+        } else if (user.password === "") {
+            displayMessage("error", "Password cannot be blank");
+        } else {
+            displayMessage("success", "Registered successfully");
+
+            // set new submission
+            localStorage.setItem("user", JSON.stringify(user));
+
+            // get most recent submission
+            var lastUser = JSON.parse(localStorage.getItem("user"));
+            userFirstNameSpan.textContent = lastUser.firstName;
+            userLastNameSpan.textContent = lastUser.lastName;
+            userEmailSpan.textContent = lastUser.email;
+            userPasswordSpan.textContent = lastUser.password;
+        }
+    });
+*/
+
 
 })
